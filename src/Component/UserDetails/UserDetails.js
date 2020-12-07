@@ -4,8 +4,11 @@ const UserDetails = () => {
     
     const [localData, setLocalData] = useState({})
     useEffect(()=> {
-        const data = localStorage.getItem('userData') || {};
-        setLocalData(JSON.parse(data))
+        const data = localStorage.getItem('userData');
+        if(data){
+            setLocalData(JSON.parse(data));
+        }
+        
     },[])
 
     return (
