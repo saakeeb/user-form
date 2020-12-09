@@ -29,6 +29,22 @@ const UserForm = () => {
       const clubClick=()=>{
         document.getElementById('club').style.display = 'block';
       }
+      const showClick=()=>{
+        document.getElementById('club').style.display = 'block';
+        document.getElementById('date').style.display = 'block';
+        document.getElementById('password').style.display = 'block';
+        document.getElementById('mobile').style.display = 'block';
+        document.getElementById('email').style.display = 'block';
+        document.getElementById('name').style.display = 'block';
+      }
+      const hideClick=()=>{
+        document.getElementById('club').style.display = 'none';
+        document.getElementById('date').style.display = 'none';
+        document.getElementById('password').style.display = 'none';
+        document.getElementById('mobile').style.display = 'none';
+        document.getElementById('email').style.display = 'none';
+        document.getElementById('name').style.display = 'none';
+      }
 
 
     return (
@@ -93,6 +109,12 @@ const UserForm = () => {
                 <div style={{display:"flex", padding:'10px'}}>
                     <button onClick={handleSubmit(dateClick)}>Date</button>
                     <button onClick={handleSubmit(clubClick)}>Info</button>
+                </div>
+                <div style={{display:"flex", padding:'10px'}}>
+                    <button onClick={handleSubmit(showClick)}>Show All</button>
+                </div>
+                <div style={{display:"flex", padding:'10px'}}>
+                    <button onClick={handleSubmit(hideClick)}>Clear All</button>
                 </div>
             </div>
         </div>
