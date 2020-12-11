@@ -1,6 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
+import firebase from "firebase/app";
+import "firebase/analytics";
+
+firebase.analytics();
+
 const UserForm = () => {
     const { register, handleSubmit} = useForm();
 
@@ -8,43 +13,51 @@ const UserForm = () => {
         localStorage.setItem('userData', JSON.stringify(data));
         e.target.reset();
         console.log(data);
-      };
-      const id  = Math.ceil(Math.random() * 10000);
+    };
 
-      const nameClick=()=>{
-        document.getElementById('name').style.display = 'block';
-      }
-      const emailClick=()=>{
-        document.getElementById('email').style.display = 'block';
-      }
-      const mobileClick=()=>{
-        document.getElementById('mobile').style.display = 'block';
-      }
-      const passwordClick=()=>{
-        document.getElementById('password').style.display = 'block';
-      }
-      const dateClick=()=>{
-        document.getElementById('date').style.display = 'block';
-      }
-      const clubClick=()=>{
-        document.getElementById('club').style.display = 'block';
-      }
-      const showClick=()=>{
-        document.getElementById('club').style.display = 'block';
-        document.getElementById('date').style.display = 'block';
-        document.getElementById('password').style.display = 'block';
-        document.getElementById('mobile').style.display = 'block';
-        document.getElementById('email').style.display = 'block';
-        document.getElementById('name').style.display = 'block';
-      }
-      const hideClick=()=>{
-        document.getElementById('club').style.display = 'none';
-        document.getElementById('date').style.display = 'none';
-        document.getElementById('password').style.display = 'none';
-        document.getElementById('mobile').style.display = 'none';
-        document.getElementById('email').style.display = 'none';
-        document.getElementById('name').style.display = 'none';
-      }
+    const id  = Math.ceil(Math.random() * 10000);
+
+    const show = id =>{
+        document.getElementById(id).style.display = 'block';
+    }
+    const hide = id =>{
+        document.getElementById(id).style.display = 'none';
+    }
+
+    const nameClick=()=>{
+        show('name');
+    }
+    const emailClick=()=>{
+        show('email')
+    }
+    const mobileClick=()=>{
+        show('mobile');
+    }
+    const passwordClick=()=>{
+        show('password');
+    }
+    const dateClick=()=>{
+        show('date');
+    }
+    const clubClick=()=>{
+        show('club');
+    }
+    const showClick=()=>{
+        show('name');
+        show('email');
+        show('mobile');
+        show('password');
+        show('date');
+        show('club');
+    }
+    const hideClick=()=>{
+        hide('name');
+        hide('email');
+        hide('mobile');
+        hide('password');
+        hide('date');
+        hide('club');
+    }
 
 
     return (
@@ -59,7 +72,7 @@ const UserForm = () => {
                 </div><br/>
 
                 <div className="form-control" style={{display:'none'}} show={false} id="name">
-                    <label for="name">User Name</label>
+                    <label for="name">Name</label>
                     <input type="text"  name="name" ref={register} />
                 </div><br/>
 
@@ -90,8 +103,7 @@ const UserForm = () => {
                 <br/>
 
                 <div className="form-control">
-                    <label></label>
-                    <button type="submit">Submit</button>
+                    <input type="submit" value="Submit"/>
                 </div>
             </form>
 

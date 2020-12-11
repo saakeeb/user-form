@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div>
             <h1>Welcome to our club</h1>
-            <h3>You can join our club submitting the form</h3>
+            <h3>You can join our club by submitting the form</h3>
             <h4>You can fill up form <Link to="/form">here</Link>.</h4>
         </div>
     );

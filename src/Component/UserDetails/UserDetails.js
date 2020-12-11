@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import firebase from "firebase/app";
+import "firebase/analytics";
+
+firebase.analytics();
+
 const UserDetails = () => {
     
     const [localData, setLocalData] = useState({})
@@ -10,9 +15,9 @@ const UserDetails = () => {
         }
         
     },[])
-    const hide = ()=>{
+    // const hide = ()=>{
 
-    }
+    // }
     return (
         <div>
             <h3>Member Details</h3>

@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from './Component/Home/Home';
 import UserForm from './Component/UserForm/UserForm';
 import UserDetails from './Component/UserDetails/UserDetails';
+import firebase from "firebase/app";
+import "firebase/analytics";
+import Register from './Component/Register/Register';
+
+firebase.analytics();
 
 
 function App() {
@@ -24,6 +29,9 @@ function App() {
           </Route>
           <Route path="/details">
             <UserDetails></UserDetails>
+          </Route>
+          <Route path="/register">
+            <Register></Register>
           </Route>
           <Route path="/*">
             <h3>Please input correctly</h3>
