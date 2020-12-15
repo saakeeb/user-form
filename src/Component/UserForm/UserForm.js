@@ -8,6 +8,7 @@ firebase.analytics();
 
 const UserForm = () => {
     const { register, handleSubmit} = useForm();
+    
 
     const onSubmit = (data, e) => {
         localStorage.setItem('userData', JSON.stringify(data));

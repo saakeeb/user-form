@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import Header from './Component/Header/Header';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -8,13 +8,16 @@ import UserDetails from './Component/UserDetails/UserDetails';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import Register from './Component/Register/Register';
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 
 firebase.analytics();
-
+export const UserContext = createContext()
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({})
+
   return (
-    <div className="App">
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Header></Header>
         <Switch>
@@ -27,9 +30,9 @@ function App() {
           <Route path="/form">
             <UserForm></UserForm>
           </Route>
-          <Route path="/details">
+          <PrivateRoute path="/details">
             <UserDetails></UserDetails>
-          </Route>
+          </PrivateRoute>
           <Route path="/register">
             <Register></Register>
           </Route>
@@ -41,7 +44,7 @@ function App() {
       </Router>
       
 
-    </div>
+    </UserContext.Provider>
   );
 }
 
